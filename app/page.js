@@ -193,8 +193,8 @@ export default function Home() {
           padding: 120px 0 60px;
           position: relative;
           background: 
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.98)),
-            url('/hero-running-bg.png') no-repeat center top;
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.84) 0%, rgba(255, 255, 255, 0.94) 75%, rgba(255, 255, 255, 1) 100%),
+            url('/bg-runners-route.jpg') no-repeat center 28%;
           background-size: cover;
           border-bottom: 1px solid var(--border-subtle);
         }
@@ -358,6 +358,12 @@ export default function Home() {
           background-color: var(--bg-subtle);
           border-top: 1px solid var(--border-subtle);
           border-bottom: 1px solid var(--border-subtle);
+        }
+        #latar-belakang {
+          background: 
+            linear-gradient(to right, rgba(248, 250, 252, 0.95) 0%, rgba(248, 250, 252, 0.92) 50%, rgba(248, 250, 252, 0.97) 100%),
+            url('/bg-runners-action.jpg') no-repeat right center;
+          background-size: cover;
         }
         .section-header {
           margin-bottom: 40px;
@@ -867,7 +873,11 @@ export default function Home() {
            Pre-Footer Registration Portal Card
         --------------------------------- */
         .portal-banner {
-          background: var(--primary);
+          position: relative;
+          background: 
+            linear-gradient(135deg, rgba(55, 48, 163, 0.88), rgba(30, 27, 75, 0.94)),
+            url('/bg-runners-finish.jpg') no-repeat center 35%;
+          background-size: cover;
           color: #ffffff;
           border-radius: var(--radius-md);
           padding: 44px 36px;
@@ -875,6 +885,7 @@ export default function Home() {
           align-items: center;
           justify-content: space-between;
           gap: 32px;
+          box-shadow: var(--shadow-sm);
         }
         @media (max-width: 820px) {
           .portal-banner {
@@ -972,40 +983,73 @@ export default function Home() {
         }
 
         /* ---------------------------------
-           Sponsors & Partners Grid
+           Sponsors & Partners Running Text
         --------------------------------- */
         .partners-block {
           margin-top: 50px;
           padding-top: 40px;
           border-top: 1px solid var(--border-subtle);
           text-align: center;
+          overflow: hidden;
         }
         .partners-eyebrow {
           font-family: var(--font-outfit);
           font-size: 0.75rem;
           font-weight: 700;
           text-transform: uppercase;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.12em;
           color: var(--text-muted);
           margin-bottom: 20px;
         }
-        .partners-row {
+        .marquee-wrapper {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+          padding: 6px 0;
+          mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .marquee-track {
           display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 12px;
-          max-width: 900px;
-          margin: 0 auto;
+          gap: 16px;
+          width: max-content;
+          animation: marqueeScroll 28s linear infinite;
+        }
+        .marquee-wrapper:hover .marquee-track {
+          animation-play-state: paused;
+        }
+        @keyframes marqueeScroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
         .partner-chip {
           background: #ffffff;
           border: 1px solid var(--border-subtle);
           border-radius: var(--radius-xs);
-          padding: 8px 16px;
+          padding: 8px 18px;
           font-family: var(--font-outfit);
-          font-size: 0.84rem;
+          font-size: 0.86rem;
           font-weight: 600;
           color: var(--text-secondary);
+          white-space: nowrap;
+          box-shadow: var(--shadow-xs);
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          flex-shrink: 0;
+        }
+        .partner-chip::before {
+          content: "";
+          display: inline-block;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: var(--accent);
+          opacity: 0.85;
         }
 
         /* ---------------------------------
@@ -1097,7 +1141,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="btn-primary nav-cta"
               >
-                Daftar via Wanatix
+                Beli Tiket Sekarang!
               </a>
             </div>
           </div>
@@ -1108,7 +1152,7 @@ export default function Home() {
       <header className="hero">
         <div className="container">
           <div className="hero-inner">
-            <div className="hero-affiliation">
+            <div className="eyebrow-tag section-eyebrow">
               <span>Universitas Buana Perjuangan Karawang</span>
             </div>
 
@@ -1548,7 +1592,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. PROMO KOMUNITAS LARI */}
+      {/* 7. PROMO KOMUNITAS LARI
       <section className="section section-alt" id="komunitas">
         <div className="container">
           <div className="community-container">
@@ -1601,7 +1645,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 8. PRE-FOOTER REGISTRATION CALL TO ACTION */}
       <section className="section" id="pendaftaran-portal">
@@ -1686,24 +1730,32 @@ export default function Home() {
             </a>
           </div>
 
-          {/* Partners & Sponsors Grid */}
+          {/* Partners & Sponsors Running Text */}
           <div className="partners-block">
             <div className="partners-eyebrow">Diselenggarakan &amp; Didukung Oleh</div>
-            <div className="partners-row">
-              {[
-                "Universitas Buana Perjuangan Karawang",
-                "Fakultas Farmasi UBP",
-                "Hydro Coco",
-                "Fotoyu",
-                "Sofasco",
-                "Primaya Hospital Karawang",
-                "Jakarta",
-                "Kahf"
-              ].map((partner, idx) => (
-                <div className="partner-chip" key={idx}>
-                  {partner}
-                </div>
-              ))}
+            <div className="marquee-wrapper">
+              <div className="marquee-track">
+                {[
+                  "Universitas Buana Perjuangan Karawang",
+                  "Fakultas Farmasi UBP",
+                  "Hydro Coco",
+                  "Fotoyu",
+                  "Sofasco",
+                  "Primaya Hospital Karawang",
+                  "Kahf",
+                  "Universitas Buana Perjuangan Karawang",
+                  "Fakultas Farmasi UBP",
+                  "Hydro Coco",
+                  "Fotoyu",
+                  "Sofasco",
+                  "Primaya Hospital Karawang",
+                  "Kahf"
+                ].map((partner, idx) => (
+                  <div className="partner-chip" key={idx}>
+                    {partner}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -1715,9 +1767,6 @@ export default function Home() {
           <div className="footer-inner">
             <div>
               <div className="footer-brand">UBP RUN 2026 KARAWANG</div>
-              <p style={{ marginTop: "4px", fontSize: "0.82rem" }}>
-                Departemen Farmakologi &amp; Farmasi Klinis, Fakultas Farmasi, Universitas Buana Perjuangan Karawang.
-              </p>
               <p style={{ marginTop: "4px", fontSize: "0.76rem" }}>
                 &copy; 2026 UBP RUN 2026. Hak Cipta Dilindungi Undang-Undang. #RUNWITHUS
               </p>

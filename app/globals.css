@@ -185,22 +185,30 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--primary);
 }
 
-/* Micro Labels and Eyebrows */
+/* Micro Labels and Eyebrows - Authentic Athletic Editorial Kicker */
 .eyebrow-tag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-family: var(--font-outfit);
-  font-weight: 700;
-  font-size: 0.72rem;
+  font-weight: 800;
+  font-size: 0.74rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   color: var(--primary);
-  background: var(--primary-light);
-  border: 1px solid var(--primary-border);
-  padding: 4px 10px;
-  border-radius: var(--radius-xs);
+  background: transparent;
+  border: none;
+  padding: 0;
   line-height: 1;
+}
+
+.eyebrow-tag::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
 }
 
 /* Clean Size Chart Table */
